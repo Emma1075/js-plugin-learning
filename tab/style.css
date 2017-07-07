@@ -4,11 +4,15 @@
 	/*background: #ccc;*/
 }
 
+body {
+	background: seashell;
+}
+
 hr {
 	margin: 10px 0;
-	height: 1px;
+	height: 2px;
 	border: none;
-	background: #ccc
+	background: darksalmon
 }
 
 .tab-wrap {
@@ -20,7 +24,7 @@ hr {
 	list-style: none;
 	width: 319px;
 	height: 200px;
-	border: 1px solid #ccc;
+	border: 2px solid darksalmon;
 	background: #fff;
 }
 
@@ -35,7 +39,7 @@ hr {
 	width: 79px;
 	height: 30px;
 	line-height: 30px;
-	background: #ccc;
+	background: darksalmon;
 	font-size: 14px;
 	color: #fff;
 	text-align: center;
@@ -55,8 +59,8 @@ hr {
 .tab-wrap .tab-nav .tab-nav-item.active a{
 	background: #fff;
 	border-bottom: 2px solid #fff;
-	color: #ccc;
-	font-size: bold;
+	color: darksalmon;
+	font-weight: bold;
 }
 
 
