@@ -120,8 +120,5 @@
 			return this;
 		}
 	})
-
-
-	window.Tab = Tab;
 })(jQuery)
 
