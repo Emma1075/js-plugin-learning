@@ -1,0 +1,78 @@
+* {
+	margin: 0;
+	padding: 0;
+	/*background: #ccc;*/
+}
+
+hr {
+	margin: 10px 0;
+	height: 1px;
+	border: none;
+	background: #ccc
+}
+
+.tab-wrap {
+	position: absolute;
+	left: 50%;
+	top: 50%;
+	transform: translate(-50%, -50%);
+	font-size: 14px;
+	list-style: none;
+	width: 319px;
+	height: 200px;
+	border: 1px solid #ccc;
+	background: #fff;
+}
+
+.tab-wrap .tab-nav ul {
+	font-size: 0;
+}
+
+.tab-wrap .tab-nav .tab-nav-item {
+	display: inline-block;
+	border-left: 1px solid #fff;
+	margin: 0;
+	width: 79px;
+	height: 30px;
+	line-height: 30px;
+	background: #ccc;
+	font-size: 14px;
+	color: #fff;
+	text-align: center;
+}
+
+.tab-wrap .tab-nav .tab-nav-item.first {
+	border-left: none;
+}
+
+.tab-wrap .tab-nav a {
+	display: block;
+	color: #fff;
+	text-decoration: none;
+}
+
+.tab-wrap .tab-nav li.tab-nav-item a:hover,
+.tab-wrap .tab-nav .tab-nav-item.active a{
+	background: #fff;
+	border-bottom: 2px solid #fff;
+	color: #ccc;
+	font-size: bold;
+}
+
+
+.tab-wrap .tab-content {
+	position: relative;
+}
+
+.tab-wrap .tab-content .tab-content-item {
+	display: none;
+	position: absolute;
+	margin: 0 auto;
+	padding: 20px;
+	margin: 0 auto;
+}
+
+.tab-wrap .tab-content .tab-content-item.active {
+	display: block; 
+}
+

@@ -1,0 +1,54 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<title>tab</title>
+	<link rel="stylesheet" type="text/css" href="style.css">
+</head>
+<body>
+<div class="js-tab tab-wrap" data-config='{
+	"triggerType":"click",
+	"invoke": 4,
+	"auto": 1000
+}'>
+	<div class="tab-nav">
+		<ul>
+			<li class="tab-nav-item first"><a href="#">1</a></li>
+			<li class="tab-nav-item active"><a href="#">2</a></li>
+			<li class="tab-nav-item"><a href="#">3</a></li>
+			<li class="tab-nav-item"><a href="#">4</a></li>
+		</ul>
+	</div>
+	<div class="tab-content">
+		<div class="tab-content-item active"> 
+			<p>我是第一个标签的内容。</p>
+			<hr>
+			<p>我是一个选项卡。<p>
+		</div>
+		<div class="tab-content-item"> 
+			<p>我是第二个标签的内容。</p>
+			<hr>
+			<p>我是一个选项卡。<p>
+		</div>
+		<div class="tab-content-item"> 
+			<p>我是第三个标签的内容。</p>
+			<hr>
+			<p>我是一个选项卡。<p>
+		</div>
+		<div class="tab-content-item"> 
+			<p>我是第四个标签的内容。</p>
+			<hr>
+			<p>我是一个选项卡。<p>
+		</div>
+	</div>
+</div>
+<script type="text/javascript" src="http://libs.baidu.com/jquery/1.11.1/jquery.min.js"></script>
+<script type="text/javascript" src="tab.js"></script>
+<script type="text/javascript">
+	$(function() {
+		// var tab = new Tab($('.js-tab').eq(0));
+		$('.js-tab').tab();
+
+	})
+</script>
+</body>
+</html>
