@@ -20,7 +20,6 @@
 		// 标签 与 内容
 		this.tabItems = this.tab.find('.tab-nav li');
 		this.tabContentItems = this.tab.find('.tab-content .tab-content-item');
-		this.activeIndex = this.tab.find('.tab-nav-item.active');
 
 		// 计时器
 		this.timer = null;
@@ -40,7 +39,6 @@
 				if (config.triggerType == 'click') {
 					_this.tabItems.bind(config.triggerType, function() {
 						_this.invoke($(this));
-						_this.activeIndex = $(this).index();
 					}) 
 				} else {
 					_this.tabItems.bind('mouseover', function() {
@@ -68,14 +66,6 @@
 
 			}
 
-			// 鼠标滑动更改页面内容
-			_this.tabItems.hover(function() {
-				let index = $(this).index();
-				_this.invoke(_this.tabContentItems.eq(index));
-				
-			}, function() {
-				_this.invoke(_this.tabContentItems.eq(_this.activeIndex));
-			})
 		},
 
 		// 获取配置参数
@@ -96,11 +86,11 @@
 			this.tabItems.removeClass('active').eq(index).addClass('active');
 			this.tabContentItems.removeClass('active').eq(index).addClass('active');
 
-			// if (effect === 'fade') {
-			// 	this.tabContentItems.fadeOut().eq(index).fadeIn();	
-			// } else {
-			// 	this.tabContentItems.removeClass('active').eq(index).addClass('active');
-			// }
+			if (effect === 'fade') {
+				this.tabContentItems.fadeOut().eq(index).fadeIn();	
+			} else {
+				this.tabContentItems.removeClass('active').eq(index).addClass('active');
+			}
 		},
 
 		// 自动切换
