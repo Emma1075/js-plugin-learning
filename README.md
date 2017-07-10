@@ -203,16 +203,15 @@ if (config.auto) {
 6.3. 样式技巧
 
 ```
-.tab-wrap					// 不设 border
+.tab-wrap				// 不设 border
+	.tab-nav			// 不设 border
+		.tab-nav-item		// 仅设置 border-bottom 
+		.tab-nav-item.active 	// 设置 border, 但 border-bottom 为 none
+		
 
-	.tab-nav				// 不设 border
-		.tab-nav-item			// 仅设置 border-bottom 
-		.tab-nav-item.active 		// 设置 border, 但 border-bottom 为 none
-		// ...
-
-	.tab-content 				// 设置 border,但 border-top 为 none
+	.tab-content 			// 设置 border,但 border-top 为 none
 		.tab-content-item
-		// ...
+		
 ```
 
 
