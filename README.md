@@ -10,13 +10,13 @@ demo演示地址：http://www.sugar1075.online/js-plugin-learning/tab/tab
 - `invoke`: 默认展示第几个 tab-content
 - `auto`: 是否自动切换
 
-### 调用方法
+### 1. 调用方法
 ```js
 $('.js-tab').tab()
 
 ```
-### 实现思路
-#### 参数设置
+### 2. 实现思路
+#### 2.1 参数设置
 将自定义参数写在元素的 `data-config` 中， 为 Tab 定义默认参数 `this.DEFAULT` 与原型方法 `this.getConfig()`。
 
 通过 `$.extend()` 方法得到最终参数。
@@ -35,7 +35,7 @@ function() {
 }
 ```
 
-#### 初始化
+#### 2.2 初始化
 
 ```js
 // 原型上的 _init 方法
@@ -78,7 +78,7 @@ function () {
 
 ```
 
-#### 切换状态
+#### 3. 切换状态
 先获取当前 tab 的 index 值，通过增加移除 `active` 样式来控制显示。
 注意自定义参数 `config.effect` 不同切换效果的变化。
 
@@ -104,7 +104,7 @@ function (currentTab) {
 
 ```
 
-#### 自动播放
+#### 4. 自动播放
 通过 `setInterval()` 方法，实现自动播放。但注意一点，当鼠标在 tab 内时，停止自动播放，保持当前选项卡状态不变。（详见 `_init()` 方法）
 
 ```js
@@ -127,7 +127,7 @@ function (time) {
 
 ```
 
-#### 封装为 jQuery 方法
+#### 5. 封装为 jQuery 方法
 通过 `$.fn.extend()` 进行封装。最后将 `this` return 出去，方便 jQuery 的链式调用。
 
 ```js
@@ -143,8 +143,8 @@ $.fn.extend({
 
 ```
 
-#### 一些bug
-1. 当效果为 `fade` 时，注意改变 `active`样式
+#### 6. 一些bug
+6.1. 当效果为 `fade` 时，注意改变 `active`样式
 ```js
 // 原写法
 if (effect === 'fade') {
@@ -165,7 +165,7 @@ if (effect === 'fade') {
 
 如果不这样处理的话，一次遍循环 content 会有闪烁bug。
 
-2. 自动播放bug
+6.2. 自动播放bug
 我们默认当鼠标移到 tab 区域时，停止自动播放（清除计时器），显示当前 content 内容，直到鼠标移出 tab 区域再重新进行自动播放。代码如下：
 ```js
 // 如果鼠标在 tab 上，取消自动播放
@@ -200,17 +200,19 @@ if (config.auto) {
 
 ```
 
-3. 样式技巧
+6.3. 样式技巧
 
-```js
-- .tab-wrap 					// 不设 border
-	- .tab-nav 					// 不设 border
-		- .tab-nav-item			// 仅设置 border-bottom 
-		- .tab-nav-item.active 	// 设置 border, 但 border-bottom 为 none
-		...
-	- .tab-content 				// 设置 border,但 border-top 为 none
-		- .tab-content-item
-		...
+```
+.tab-wrap					// 不设 border
+
+	.tab-nav					// 不设 border
+		.tab-nav-item					// 仅设置 border-bottom 
+		.tab-nav-item.active 	// 设置 border, 但 border-bottom 为 none
+		// ...
+
+	.tab-content 				// 设置 border,但 border-top 为 none
+		.tab-content-item
+		// ...
 ```
 
 
