@@ -1,7 +1,7 @@
 * {
 	margin: 0;
 	padding: 0;
-	/*background: #ccc;*/
+	box-sizing: border-box;
 }
 
 body {
@@ -22,50 +22,56 @@ hr {
 	transform: translate(-50%, -50%);
 	font-size: 14px;
 	list-style: none;
-	width: 319px;
+	width: 320px;
 	height: 200px;
-	border: 2px solid darksalmon;
 	background: #fff;
+	box-shadow: 3px 5px 2px #ccc;
 }
 
 .tab-wrap .tab-nav ul {
 	font-size: 0;
+	height: 15%;
 }
 
 .tab-wrap .tab-nav .tab-nav-item {
 	display: inline-block;
-	border-left: 1px solid #fff;
+	border-bottom: 2px solid darksalmon;
 	margin: 0;
-	width: 79px;
+	width: 80px;
 	height: 30px;
 	line-height: 30px;
-	background: darksalmon;
+	background: #fff;
 	font-size: 14px;
-	color: #fff;
+	color: darksalmon;
 	text-align: center;
 }
 
 .tab-wrap .tab-nav .tab-nav-item.first {
-	border-left: none;
+	/*border-left: none;*/
 }
 
 .tab-wrap .tab-nav a {
 	display: block;
-	color: #fff;
+	color: darksalmon;
 	text-decoration: none;
 }
 
 .tab-wrap .tab-nav li.tab-nav-item a:hover,
 .tab-wrap .tab-nav .tab-nav-item.active a{
 	background: #fff;
-	border-bottom: 2px solid #fff;
-	color: darksalmon;
+	border: 2px solid darksalmon;
+	border-bottom: none;
+	color: #000;
 	font-weight: bold;
+	border-radius: 5px 5px 0 0;
 }
 
 
 .tab-wrap .tab-content {
 	position: relative;
+	border: 2px solid darksalmon;
+	border-top: none;
+	height: 85%;
 }
 
 .tab-wrap .tab-content .tab-content-item {
