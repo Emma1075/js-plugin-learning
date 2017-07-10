@@ -94,7 +94,9 @@ function (currentTab) {
 	this.tabContentItems.removeClass('active').eq(index).addClass('active');
 
 	if (effect === 'fade') {
-		this.tabContentItems.fadeOut().eq(index).fadeIn();	
+		this.tabContentItems.removeClass('active');
+		this.tabContentItems.fadeOut().eq(index).fadeIn();
+		this.tabContentItems.eq(index).addClass('active');
 	} else {
 		this.tabContentItems.removeClass('active').eq(index).addClass('active');
 	}
@@ -141,8 +143,74 @@ $.fn.extend({
 
 ```
 
+#### 一些bug
+1. 当效果为 `fade` 时，注意改变 `active`样式
+```js
+// 原写法
+if (effect === 'fade') {
+	this.tabContentItems.fadeOut().eq(index).fadeIn();
+} else {
+	this.tabContentItems.removeClass('active').eq(index).addClass('active');
+}
 
+// 修复后
+if (effect === 'fade') {
+	this.tabContentItems.removeClass('active');
+	this.tabContentItems.fadeOut().eq(index).fadeIn();
+	this.tabContentItems.eq(index).addClass('active');
+} else {
+	this.tabContentItems.removeClass('active').eq(index).addClass('active');
+}
+```
 
+如果不这样处理的话，一次遍循环 content 会有闪烁bug。
 
+2. 自动播放bug
+我们默认当鼠标移到 tab 区域时，停止自动播放（清除计时器），显示当前 content 内容，直到鼠标移出 tab 区域再重新进行自动播放。代码如下：
+```js
+// 如果鼠标在 tab 上，取消自动播放
+if (config.auto) {
+	_this.autoPlay(config.auto);
+
+	// 如果鼠标在 tab 上，取消自动播放
+	_this.tab.hover(() => {
+		window.clearInterval(this.timer);
+	}, () => {
+		this.autoPlay(config.auto);
+	})
+
+}
+```
+
+这里产生的 bug 为，如果 `config.triggerType` 为 `mouseover` 且 `config.auto != false` ,自动播放就会有bug。所以修复为：
+```js
+// 自动播放的实现
+if (config.auto) {
+	_this.autoPlay(config.auto);
+
+	if (config.triggerType == 'click') {
+		// 如果鼠标在 tab 上，取消自动播放
+		_this.tab.hover(() => {
+			window.clearInterval(this.timer);
+		}, () => {
+			this.autoPlay(config.auto);
+		})
+	}
+}
+
+```
+
+3. 样式技巧
+
+```js
+- .tab-wrap 					// 不设 border
+	- .tab-nav 					// 不设 border
+		- .tab-nav-item			// 仅设置 border-bottom 
+		- .tab-nav-item.active 	// 设置 border, 但 border-bottom 为 none
+		...
+	- .tab-content 				// 设置 border,但 border-top 为 none
+		- .tab-content-item
+		...
+```
 
 
